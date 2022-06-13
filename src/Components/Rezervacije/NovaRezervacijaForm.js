@@ -36,8 +36,10 @@ function NovaRezervacijaForm(props) {
       <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.control}>
           <label htmlFor="title"> Broj mesta?</label>
+          
           <input type="text" required id="brojMesta" ref={brojMestaRef} />
         </div>
+        
         <div className={classes.action}>
           <button onClick={submitHandler}>Rezerviši</button>
         </div>

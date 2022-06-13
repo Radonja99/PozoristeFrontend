@@ -8,17 +8,20 @@ function MainNavigation() {
 
   const isLoggedIn = authCtx.isLoggedIn;
 
-  const Navigate = useNavigate();
+  // const Navigate = useNavigate();
 
-  const navigateToSvePredstaveOpera = () => {
-    Navigate('/svepredstave', { state: { zanr: 'opera'}});
-  }
-  const navigateToSvePredstaveDrama = () => {
-    Navigate('/svepredstave', { state: { zanr: 'drama'}});
-  }
-  const navigateToSvePredstaveBalet = () => {
-    Navigate('/svepredstave', { state: { zanr: 'balet'}});
-  }
+  // const navigateToSvePredstaveOpera = () => {
+  //   Navigate('/svepredstave', { state: { zanr: 'opera'}});
+  //   window.location.reload()
+  // }
+  // const navigateToSvePredstaveDrama = () => {
+  //   Navigate('/svepredstave', { state: { zanr: 'drama'}});
+  //   window.location.reload()
+  // }
+  // const navigateToSvePredstaveBalet = () => {
+  //   Navigate('/svepredstave', { state: { zanr: 'balet'}});
+  //   window.location.reload()
+  // }
 
   const logoutHandler = () => {
     authCtx.logout();
@@ -84,13 +87,20 @@ function MainNavigation() {
               </button>
             </li>
           )}
+          {isLoggedIn && (
+            <li className={classes.li}>
+              <Link to="/myprofile" className={classes.link}>
+                My profile
+              </Link>
+            </li>
+          )}
         </ul>
       </nav>
-      <div>
+      {/* <div>
         <button onClick={navigateToSvePredstaveBalet}>Balet</button>
         <button onClick={navigateToSvePredstaveOpera}>Opera</button>
         <button onClick={navigateToSvePredstaveDrama}>Drama</button>
-      </div>
+      </div> */}
     </header>
   
  );

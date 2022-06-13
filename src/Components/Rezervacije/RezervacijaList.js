@@ -3,9 +3,9 @@ import RezervacijaItem from "./RezervacijaItem";
 function RezervacijaList(props) {
     return (
         <ul>
-            {props.rezervacije.map((rezervacija)=> (
+            {props.rezervacije.map((rezervacija, index)=> (
                 <RezervacijaItem
-                key = {rezervacija.id}
+                key = {index}
                 id = {rezervacija.id}
                 datumKreiranjaRezervacije = {rezervacija.datumKreiranjaRezervacije}
                 placeno = {'Rezervacija je placena: ' + String(rezervacija.placeno)}
@@ -19,5 +19,4 @@ function RezervacijaList(props) {
         </ul>
     )
 }
-
 export default RezervacijaList;

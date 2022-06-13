@@ -36,11 +36,38 @@ function SveIzvedbePage() {
         };
         izvedbe.push(izvedba);
     }
-      
       setIsLoading(false);
       setSveIzvedbeNiz(izvedbe);
     });
   }, []);
+  const sortirajUzbrdoHandler = () => {
+  const sortiraneIzvedbeUzbrdo = [].concat(sveIzvedbeNiz)
+    .sort((a,b) => a.cena > b.cena ? 1: -1)
+    setSveIzvedbeNiz(sortiraneIzvedbeUzbrdo);
+  }
+  const sortirajNizbrdoHandler = () => {
+    const sortiraneIzvedbeNizbrdo = [].concat(sveIzvedbeNiz)
+    .sort((a,b) => a.cena > b.cena ? -1 : 1)
+    setSveIzvedbeNiz(sortiraneIzvedbeNizbrdo);
+  }
+  
+    // nizbrdo
+    // function sortDescend() {
+    // const sortiraneIzvedbeNizbrdo = [].concat(izvedbe)
+    // .sort((a,b) => a.cena > b.cena ? -1 : 1)
+    // return sortiraneIzvedbeNizbrdo;
+    // }
+
+    const sortirajSlobodnaMestaUzbrdoHandler = () => {
+      const sortiraneIzvedbeUzbrdo = [].concat(sveIzvedbeNiz)
+        .sort((a,b) => a.brojSlobodnihMesta > b.brojSlobodnihMesta ? 1: -1)
+        setSveIzvedbeNiz(sortiraneIzvedbeUzbrdo);
+      }
+      const sortirajSlobodnaMestaNizbrdoHandler = () => {
+        const sortiraneIzvedbeNizbrdo = [].concat(sveIzvedbeNiz)
+        .sort((a,b) => a.brojSlobodnihMesta > b.brojSlobodnihMesta ? -1 : 1)
+        setSveIzvedbeNiz(sortiraneIzvedbeNizbrdo);
+      }
 
 
   if (isLoading) {
@@ -53,6 +80,10 @@ function SveIzvedbePage() {
   return (
     <section>
       <h1>Sve izvedbe</h1>
+      <button onClick={sortirajUzbrdoHandler}> Sortiraj po ceni rastuce</button>
+      <button onClick={sortirajNizbrdoHandler}> Sortiraj po ceni opadajuce</button>
+      <button onClick={sortirajSlobodnaMestaNizbrdoHandler}> Sortiraj po slobodnim mestima opadajuce</button>
+      <button onClick={sortirajSlobodnaMestaUzbrdoHandler}> Sortiraj po slobodnim mestima rastuce</button>
       <IzvedbeList izvedbe={sveIzvedbeNiz}> </IzvedbeList>
     </section>
   );

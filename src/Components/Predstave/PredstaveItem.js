@@ -8,10 +8,14 @@ import { useNavigate } from "react-router-dom";
 
 function deleteHandler(id) {
  
+  var token = localStorage.getItem('token');
   fetch("http://localhost:5000/api/predstava/" + id, {
     method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   }).then((res) => res)
-
+  window.location.reload()
 }
 function PredstavaItem(props) {
   const authCtx = useContext(AuthContext);
@@ -24,12 +28,11 @@ function PredstavaItem(props) {
       <li className={classes.item}>
         <div className={classes.div}>
           <h3>{props.nazivPredstave}</h3>
-          <p>{props.zanr}</p>
-          <p>{props.brojIzvodjenja}</p>
-          <p>{props.datumPremijere}</p>
-          <p>{props.predstavaID}</p>
-          {authCtx.isLoggedIn ? <button onClick={navigateToRezervacija}>Rezervisi karte</button>
-          : <b> Ulogujte se da biste rezervisali karte!</b>}
+          <p>Zanr predstave: {props.zanr}</p>
+          <p>Izvodi se: {props.brojIzvodjenja}. put</p>
+          <p>Premijerno izvodjenje: {props.datumPremijere}</p>
+          {authCtx.isLoggedIn ? <button onClick={navigateToRezervacija}>Vidi izvedbe</button>
+          : <b> Ulogujte se da biste videli izvedbe ove predstave i rezervisali karte!!</b>}
           {authCtx.admin == "admin" && (
           <button onClick={() => deleteHandler(props.predstavaID)}>
             Obrisi predstavu

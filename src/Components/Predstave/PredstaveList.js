@@ -3,9 +3,9 @@ import PredstavaItem from "./PredstaveItem";
 function PredstaveList(props) {
   return (
     <ul>
-      {props.predstave.map((predstava) => (
+      {props.predstave.map((predstava, index) => (
         <PredstavaItem
-          key={predstava.id}
+          key={index}
           id={predstava.id}
           nazivPredstave={predstava.nazivPredstave}
           zanr={predstava.zanr}

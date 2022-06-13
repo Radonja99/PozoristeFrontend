@@ -27,13 +27,13 @@ function IzvedbeItem(props) {
     <Card>
       <li className={classes.item}>
         <div className={classes.div}>
-          <h3>{props.datumPrikazivanja}</h3>
-          <p>Gostujuca predstava: {props.gostujucaPredstava}</p>
+          <h3>{props.predstavaID}</h3>
+          <p>Datum izvodjenja: {props.datumPrikazivanja}</p>
+          <p>Gostujuca predstava: {props.gostujucaPredstava? 'Da' : 'Ne'}</p>
           <p>Broj slobodnih mesta:{props.brojSlobodnihMesta}</p>
+          <p>Sala: {props.salaID}</p>
+          <p>Pozoriste: {props.pozoriste}</p>
           <p>Cena: {props.cena}RSD</p>
-          <p>{props.salaID}</p>
-          <p>{props.predstavaID}</p> 
-         
           {authCtx.isLoggedIn ? <button onClick={navigateToRezervacija}>Rezervisi karte</button>
           : <b> Ulogujte se da biste rezervisali karte!</b>}
         </div>

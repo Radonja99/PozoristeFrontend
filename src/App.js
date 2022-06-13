@@ -10,6 +10,8 @@ import SveRezervacijePage from "./Pages/SveRezervacijePage"
 import NovaRezervacijaPage from "./Pages/NovaRezervacijaPage";
 import StripeCheckout from "./Stripe/StripeCheckout";
 import SucessPage from "./Stripe/Succes";
+import MyProfile from "./Components/Auth/MyProfile";
+import UserProfile from "./Components/Auth/UserProfile";
 
 function App() {
   
@@ -27,6 +29,7 @@ function App() {
         <Route path="/" element={<SvePredstavePage/>} />
         <Route path="/checkout" element={<StripeCheckout/>} />
         <Route path="/success" element={<SucessPage/>} />
+        <Route path="/myprofile" element={<UserProfile/>} />
 
       </Routes>
     </Layout>

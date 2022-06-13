@@ -38,9 +38,7 @@ function SveRezervacijePage() {
             ...data[key]
             
         };
-        console.log(rezervacija);
         rezervacije.push(rezervacija);
-       
     }
       setIsLoading(false);
       setSveRezervacijeNiz(data);

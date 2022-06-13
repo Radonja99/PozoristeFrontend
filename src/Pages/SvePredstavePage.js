@@ -2,14 +2,31 @@ import { useState, useEffect, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import PredstaveList from "../Components/Predstave/PredstaveList";
 import AuthContext from "../Store/auth-context";
+import { useNavigate } from "react-router-dom";
 
 function SvePredstavePage() {
   const [isLoading, setIsLoading] = useState(false);
   const [svePredstaveNiz, setSvePredstaveNiz] = useState([]);
+  const Navigate = useNavigate();
 
   const location = useLocation();
 
-  
+  const navigateToSvePredstaveOpera = () => {
+    Navigate('/svepredstave', { state: { zanr: 'opera'}});
+    window.location.reload()
+  }
+  const navigateToSvePredstaveDrama = () => {
+    Navigate('/svepredstave', { state: { zanr: 'drama'}});
+    window.location.reload()
+  }
+  const navigateToSvePredstaveBalet = () => {
+    Navigate('/svepredstave', { state: { zanr: 'balet'}});
+    window.location.reload()
+  }
+  const navigateSve = () => {
+    Navigate('/svepredstave');
+    window.location.reload()
+  }
   
   
   useEffect(() => {
@@ -24,7 +41,9 @@ function SvePredstavePage() {
   }
     fetch(URL)
     .then((response) => {
-      return response.json();
+      let pomocna = response.json();
+      console.log(pomocna);
+      return pomocna;
     })
     .then((data) => {
     const predstave =[];
@@ -34,7 +53,7 @@ function SvePredstavePage() {
             ...data[key]
             
         };
-        predstave.push(predstava);
+        predstave?.push(predstava);
        
     }
       setIsLoading(false);
@@ -53,6 +72,12 @@ function SvePredstavePage() {
   return (
     <section>
       <h1>Sve predstave</h1>
+      <div>
+        <button onClick={navigateToSvePredstaveBalet}>Balet</button>
+        <button onClick={navigateToSvePredstaveOpera}>Opera</button>
+        <button onClick={navigateToSvePredstaveDrama}>Drama</button>
+        <button onClick={navigateSve}>Sve predstave</button>
+      </div>
       <PredstaveList predstave={svePredstaveNiz}> </PredstaveList>
     </section>
   );
