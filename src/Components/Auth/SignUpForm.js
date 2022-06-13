@@ -14,7 +14,7 @@ const AuthForm = () => {
 
     const imeInputRef = useRef();
     const prezimeInputRef= useRef();
-    const JMBGInputRef = useRef();
+    const telefonInputRef = useRef();
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
 
@@ -23,19 +23,19 @@ const AuthForm = () => {
 
      const enteredIme = imeInputRef.current.value;
      const enteredPrezime = prezimeInputRef.current.value;
-     const enteredJMBG = JMBGInputRef.current.value;
+     const enteredTelefon = telefonInputRef.current.value;
      const enteredEmail = emailInputRef.current.value;
      const enteredPassword = passwordInputRef.current.value;
      const brojRezervacija2= 0;
      const role2 = 'korisnik';
      
 
-     fetch('http://localhost:5000/api/korisnik/login', {
+     fetch('http://localhost:5000/api/korisnik', {
         method: 'POST', 
         body: JSON.stringify({
             imeKorisnika: enteredIme,
             prezimeKorisnika: enteredPrezime,
-            jmbgKorisnika: enteredJMBG,
+            telefon: enteredTelefon,
             korisnickoIme: enteredEmail,
             lozinkaKorisnika: enteredPassword,
             brojRezervacija: brojRezervacija2,
@@ -54,7 +54,9 @@ const AuthForm = () => {
                  console.log(data)
              });
          }
-     });
+     }).then(() => {
+      navigate("/");
+    });;
   }
 
   return (
@@ -70,8 +72,8 @@ const AuthForm = () => {
           <input type='text' id='prezime' required ref = {prezimeInputRef} />
         </div>
         <div className={classes.control}>
-          <label htmlFor='password'>JMBG</label>
-          <input type='text' id='JMBG' required ref = {JMBGInputRef} />
+          <label htmlFor='text'>Telefon</label>
+          <input type='text' id='telefon' required ref = {telefonInputRef} />
         </div>
         <div className={classes.control}>
           <label htmlFor='email'>Your Email</label>
