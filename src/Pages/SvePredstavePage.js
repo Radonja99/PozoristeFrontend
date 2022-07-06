@@ -1,7 +1,6 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import PredstaveList from "../Components/Predstave/PredstaveList";
-import AuthContext from "../Store/auth-context";
 import { useNavigate } from "react-router-dom";
 
 function SvePredstavePage() {
@@ -34,15 +33,14 @@ function SvePredstavePage() {
     setIsLoading(true);
     if (zanr == null)
   {
-    URL = "http://localhost:5000/api/predstava"
+    URL = "https://localhost:5000/api/predstava"
   }
   else {
-    URL = `http://localhost:5000/api/predstava?zanr=${zanr}`
+    URL = `https://localhost:5000/api/predstava?zanr=${zanr}`
   }
     fetch(URL)
     .then((response) => {
       let pomocna = response.json();
-      console.log(pomocna);
       return pomocna;
     })
     .then((data) => {

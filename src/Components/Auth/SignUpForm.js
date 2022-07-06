@@ -30,7 +30,7 @@ const AuthForm = () => {
      const role2 = 'korisnik';
      
 
-     fetch('http://localhost:5000/api/korisnik', {
+     fetch('https://localhost:5000/api/korisnik', {
         method: 'POST', 
         body: JSON.stringify({
             imeKorisnika: enteredIme,

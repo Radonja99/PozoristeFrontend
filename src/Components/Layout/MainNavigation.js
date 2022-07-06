@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import classes from "./MainNavigation.module.css";
 import { useContext } from "react";
 import AuthContext from "../../Store/auth-context";
@@ -36,7 +36,7 @@ function MainNavigation() {
               Sve predstave{" "}
             </Link>
           </li>
-          {authCtx.admin == "admin" && (
+          {authCtx.admin === "admin" && (
             <li className={classes.li}>
               <Link to="/novapredstava" className={classes.link}>
                 {" "}
@@ -52,7 +52,7 @@ function MainNavigation() {
             </Link>
             </li>
           )} */}
-          {authCtx.admin == "admin" && (
+          {authCtx.admin === "admin" && (
             <li className={classes.li}>
             <Link to="/novaizvedba" className={classes.link}>
               {" "}

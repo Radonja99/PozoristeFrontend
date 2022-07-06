@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Navigate, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import NovaIzvedbaForm from "../Components/Izvedbe/NovaIzvedbaForm";
 import AuthContext from "../Store/auth-context";
 
@@ -8,7 +8,7 @@ function NovaIzvedbaPage() {
   const authCtx = useContext(AuthContext);
   const token = authCtx.token;
   function addIzvedbaHandler(NovaIzvedbaData) {
-    fetch("http://localhost:5000/api/izvedba", {
+    fetch("https://localhost:5000/api/izvedba", {
       method: "POST",
       body: JSON.stringify(NovaIzvedbaData),
       headers: {

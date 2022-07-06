@@ -10,10 +10,9 @@ const AuthContext = React.createContext({
 });
 
 export const AuthContextProvider = (props) => {
-
-  const initialToken = localStorage.getItem('token');
-  const initialID = localStorage.getItem('id');
-  const initialAdmin = localStorage.getItem('admin');
+  const initialToken = localStorage.getItem("token");
+  const initialID = localStorage.getItem("id");
+  const initialAdmin = localStorage.getItem("admin");
   const [token, setToken] = useState(initialToken);
   const [id, setID] = useState(initialID);
   const [admin, setAdmin] = useState(initialAdmin);
@@ -21,22 +20,21 @@ export const AuthContextProvider = (props) => {
   const userIsLoggedIn = !!token;
 
   const loginHandler = (token, id, admin) => {
-
     setToken(token);
-    localStorage.setItem('token', token);
+    localStorage.setItem("token", token);
     setID(id);
-    localStorage.setItem('id', id);
+    localStorage.setItem("id", id);
     setAdmin(admin);
-    localStorage.setItem('admin', admin);
+    localStorage.setItem("admin", admin);
   };
 
   const logoutHandler = () => {
     setToken(null);
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
     setID(null);
-    localStorage.removeItem('id');
+    localStorage.removeItem("id");
     setAdmin(null);
-    localStorage.removeItem('admin');
+    localStorage.removeItem("admin");
   };
   const contextValue = {
     token: token,

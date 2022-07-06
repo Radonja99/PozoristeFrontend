@@ -11,12 +11,12 @@ function SveRezervacijePage() {
 
   var URL = '';
 
-  if (authCtx.admin=="admin")
+  if (authCtx.admin==="admin")
   {
-    URL = "http://localhost:5000/api/rezervacija"
+    URL = "https://localhost:5000/api/rezervacija"
   }
-  else if (authCtx.admin=="korisnik"){
-    URL = `http://localhost:5000/api/rezervacija/korisnik/${authCtx.id}`
+  else if (authCtx.admin==="korisnik"){
+    URL = `https://localhost:5000/api/rezervacija/korisnik/${authCtx.id}`
   }
 
   

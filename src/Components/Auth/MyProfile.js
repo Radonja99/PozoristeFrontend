@@ -16,7 +16,7 @@ function MyProfile() {
     const enteredNewTelefon = newTelefonInputRef.current.value;
     let NovKorisnikData;
     console.log(id);
-    fetch(`http://localhost:5000/api/korisnik/${id}`)
+    fetch(`https://localhost:5000/api/korisnik/${id}`)
       .then((response) => {
         return response.json();
       })
@@ -34,7 +34,7 @@ function MyProfile() {
           role: data.role,
           lozinkaKorisnika: enteredNewPassword,
         }
-          fetch("http://localhost:5000/api/korisnik", {
+          fetch("https://localhost:5000/api/korisnik", {
       method: "PUT",
       body: JSON.stringify(NovKorisnikData),
       headers: {

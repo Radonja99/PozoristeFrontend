@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 function deleteHandler(id) {
  
   var token = localStorage.getItem('token');
-  fetch("http://localhost:5000/api/predstava/" + id, {
+  fetch("https://localhost:5000/api/predstava/" + id, {
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -33,7 +33,7 @@ function PredstavaItem(props) {
           <p>Premijerno izvodjenje: {props.datumPremijere}</p>
           {authCtx.isLoggedIn ? <button onClick={navigateToRezervacija}>Vidi izvedbe</button>
           : <b> Ulogujte se da biste videli izvedbe ove predstave i rezervisali karte!!</b>}
-          {authCtx.admin == "admin" && (
+          {authCtx.admin === "admin" && (
           <button onClick={() => deleteHandler(props.predstavaID)}>
             Obrisi predstavu
           </button>)}

@@ -1,7 +1,7 @@
 
 import { useNavigate } from "react-router";
 
-function SucessPage() {
+function CancelPage() {
     const navigate = useNavigate();
     const navigateToRezervacija = () => {
         navigate("/sverezervacije");
@@ -9,10 +9,10 @@ function SucessPage() {
 return(
     
     <div>
-        Čestitamo, uspešno ste izvršili plaćanje rezervacije. 
+        Nažalost, došlo je do greške, pokušajte ponovo. Sredstva sa kartice nisu skinuta. 
         <button onClick={navigateToRezervacija}>Vrati me nazad na rezervacije!</button>
     </div>
 )
 }
-export default SucessPage;
+export default CancelPage;
 

@@ -1,11 +1,14 @@
-import { useState, useRef, useContext } from "react";
+import { useRef, useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import AuthContext from "../../Store/auth-context";
 import classes from "./AuthForm.module.css";
+import Alert from "@mui/material/Alert";
 
 const AuthForm = () => {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
+  const [errMsg, setErrMsg] = useState("");
+  const [error, setError] = useState(false);
 
   var POMOCNITOKEN;
 
@@ -48,7 +51,7 @@ const AuthForm = () => {
     //         ;})
     //     }}
 
-    fetch("http://localhost:5000/api/korisnik/login", {
+    fetch("https://localhost:5000/api/korisnik/login", {
       method: "POST",
       credentials: "include",
       body: JSON.stringify({
@@ -63,38 +66,45 @@ const AuthForm = () => {
         if (res.ok) {
           return res.text();
         } else {
-          return res.text().then((data) => {
+           res.text().then((data) => {
             //error
-            console.log(data);
+            setError(true);
+            setErrMsg(data);
+            return;
           });
         }
       })
       .then((data) => {
         fetch(
-          `http://localhost:5000/api/korisnik/korisnickoime/${enteredEmail}`,
+          `https://localhost:5000/api/korisnik/korisnickoime/${enteredEmail}`,
           {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
             },
           }
-        ) .then((response) => {
+        )
+          .then((response) => {
             POMOCNITOKEN = data;
             return response.json();
           })
           .then((data) => {
             authCtx.login(POMOCNITOKEN, data.korisnikID, data.role);
+            navigate("/");
           })
-          .then(() => {});
+      //    .then(() => {});
       })
-      .then((data) => {
-       
-        navigate("/");
-      });
+      // .then((data) => {
+      //   if (!error){
+      //     console.log(data);
+      //   //navigate("/");
+      //   }
+      // });
   };
 
   return (
     <section className={classes.auth}>
+      {error && <Alert severity="error">{errMsg} !</Alert>}
       <h1>{"Login"}</h1>
       <form onSubmit={submitHandler}>
         <div className={classes.control}>

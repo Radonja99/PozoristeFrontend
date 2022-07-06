@@ -16,8 +16,8 @@ function NovaRezervacijaForm(props) {
     var today = new Date()
    
     const enteredBrojMesta = brojMestaRef.current.value;
-    const datumKreiranjaRezervacije = today.getFullYear() + '-0' + (today.getMonth() + 1) + '-' + today.getDate() + 'T00:00:00';
-    const datumIstekaRezervacije = today.getFullYear() + '-0' + (today.getMonth() + 1) + '-' + today.getDate() + 'T00:00:00';
+    const datumKreiranjaRezervacije = today.getFullYear() + '-0' + (today.getMonth() + 1) + '-' + today.getDate() + 'T' + today.getHours() +':00:00';
+    const datumIstekaRezervacije = today.getFullYear() + '-0' + (today.getMonth() + 1) + '-' + today.getDate() + 'T' + today.getHours() +':00:00';
     const placeno = false;
     const id = location.state.id;
     const NovaRezervacijaData = {
@@ -28,7 +28,6 @@ function NovaRezervacijaForm(props) {
         korisnikID: authCtx.id,
         izvedbaID: id
     };
-    console.log(NovaRezervacijaData);
     props.onAddRezervacija(NovaRezervacijaData);
   }
   return (

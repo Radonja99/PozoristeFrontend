@@ -15,10 +15,10 @@ function SveIzvedbePage() {
 
   if (id == null)
   {
-    URL = "http://localhost:5000/api/izvedba"
+    URL = "https://localhost:5000/api/izvedba"
   }
   else {
-    URL = `http://localhost:5000/api/izvedba/predstava/${id}`
+    URL = `https://localhost:5000/api/izvedba/predstava/${id}`
   }
 
   useEffect(() => {

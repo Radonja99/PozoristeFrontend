@@ -1,7 +1,6 @@
 import Card from "../UI/Card";
 import { useRef } from "react";
 import classes from "./NovaIzvedbaForm.module.css";
-import addIzvedbaHandler from "../../Pages/NovaIzvedbaPage";
 import { useState, useEffect } from "react";
 
 function NovaIzvedbaForm(props) {
@@ -32,7 +31,7 @@ function NovaIzvedbaForm(props) {
   const [svePredstaveNiz, setSvePredstaveNiz] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/predstava")
+    fetch("https://localhost:5000/api/predstava")
       .then((response) => {
         return response.json();
       })
@@ -43,7 +42,7 @@ function NovaIzvedbaForm(props) {
 
   const [sveSaleNiz, setSveSaleNiz] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/api/sala")
+    fetch("https://localhost:5000/api/sala")
       .then((response) => {
         return response.json();
       })

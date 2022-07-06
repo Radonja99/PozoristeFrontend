@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Navigate, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import NovaPredstavaForm from "../Components/Predstave/NovaPredstavaForm";
 import AuthContext from "../Store/auth-context";
 
@@ -8,7 +8,7 @@ function NovaPredstavaPage() {
   const authCtx = useContext(AuthContext);
   var token = authCtx.token;
   function addPredstavaHandler(NovaPredstavaData) {
-    fetch("http://localhost:5000/api/predstava", {
+    fetch("https://localhost:5000/api/predstava", {
       method: "POST",
       body: JSON.stringify(NovaPredstavaData),
       headers: {
@@ -18,6 +18,7 @@ function NovaPredstavaPage() {
     }).then(() => {
       navigate("/");
     });
+    
   }
   return (
     <section>
